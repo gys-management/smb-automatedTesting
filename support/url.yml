@@ -1,0 +1,3 @@
+dev: "https://ionic-angular-61cb7.web.app/auth/login"
+test: "https://ionic-angular-61cb7.web.app/auth/login"
+prod: "https://ionic-angular-61cb7.web.app/auth/login"
