@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('cucumber');
+const { Given} = require('cucumber');
 
 
 Given(/^I open the (.*)$/, function (url) {

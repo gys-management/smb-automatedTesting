@@ -5,7 +5,6 @@
   "version": "2.0.0",
   "description": "Boilerplate project to run WebdriverIO tests with Cucumber",
   "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
-
   "repository": {
     "type": "git",
     "getUrl": "https://github.com/webdriverio/cucumber-boilerplate.git"
@@ -32,6 +31,7 @@
   },
   "dependencies": {
     "@rpii/wdio-html-reporter": "^6.0.4",
+    "cucumber": "^6.0.5",
     "js-yaml": "^3.14.0"
   },
   "devDependencies": {
