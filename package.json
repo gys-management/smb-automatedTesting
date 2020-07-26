@@ -32,7 +32,8 @@
   "dependencies": {
     "@rpii/wdio-html-reporter": "^6.0.4",
     "cucumber": "^6.0.5",
-    "js-yaml": "^3.14.0"
+    "js-yaml": "^3.14.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -41,7 +42,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
     "@types/cucumber": "^6.0.1",
-    "@wdio/cli": "^6.0.8",
+    "@wdio/cli": "^6.3.5",
     "@wdio/config": "^6.0.8",
     "@wdio/cucumber-framework": "^6.1.22",
     "@wdio/local-runner": "^6.1.22",
@@ -51,7 +52,7 @@
     "@wdio/static-server-service": "^6.0.8",
     "@wdio/sync": "^6.1.14",
     "babel-jest": "^26.0.1",
-    "chromedriver": "^83.0.0",
+    "chromedriver": "^83.0.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",

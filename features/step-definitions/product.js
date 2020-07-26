@@ -6,7 +6,9 @@ let ul;
 let fileContents = fs.readFileSync('support/url.yml', 'utf8');
 let data = yaml.safeLoad(fileContents);
 let fileContents_locators = fs.readFileSync('support/url.yml', 'utf8');
-const actionFile = require('./ActionFile');
+const ActionFile = require('./ActionFile');
+let details1 = new ActionFile();
+
 Given(/^I open the (.*) and login with (.*) id$/, function (url, agent) {
 
   browser.url(data[url]);
@@ -21,35 +23,36 @@ Given(/^I open the (.*) and login with (.*) id$/, function (url, agent) {
 
 });
 
-Given(/^navigate to (.*) page with specific (.*)$/, function (details, ProCategory) {
-  $('//*[@class="dashboard-nav-ion-card-content md card-content-md hydrated"][contains(text(),"Customer")]').waitForDisplayed(30000);
-  $('//*[@class="dashboard-nav-ion-card-content md card-content-md hydrated"][contains(text(),"Customer")]').click();
-  let details_tab = $('//*[@id="main-content"]/app-customer/ion-header/ion-toolbar/ion-buttons/ion-menu-button').waitForDisplayed(10000);
+Given(/^navigate to the (.*) page$/, function (details) {
+ details1.ViewPage(details);
+    });
+When(/^navigate to the product page with detailed ProCategory$/,function(){
+  details1.productDetailsPage();
+  browser.pause(3000);
+      })
+When(/^Search the product by various sections (.*)$/,function(method){
+  details1.SearchProductsMethods(method);
+})
 
-  $('//*[@id="main-content"]/app-customer/ion-header/ion-toolbar/ion-buttons/ion-menu-button').click();
-  switch (details) {
-    case 'customer':
+Then(/^user click on the sidebar tool icon$/,function(){
+  details1.drawdownSymbol();
+})
 
+When(/^select the darkmode option$/, function(){
+details1.darkMode();
 
-      $('//*/ion-label[contains(text(),"Customer")]').waitForDisplayed(3000);
-      $('//*/ion-label[contains(text(),"Customer")]').click();
-      browser.pause(4000);
-      break;
-    case 'product':
-      $('//*/ion-label[contains(text(),"Product")]').waitForDisplayed(30000);
-      $('//*/ion-label[contains(text(),"Product")]').click();
-      actionFile.productDetailsPage(ProCategory);
+})
 
-      break;
-    case 'order':
-      $('//*/ion-label[contains(text(),"Orders")]').waitForDisplayed(30000);
-      $('//*/ion-label[contains(text(),"Orders")]').click();
-      break;
-    default:
-      console.log(`${page} is not available`);
-  }
+Then(/^user want to signout from the application$/, function(){
+  details1.signOut();
+  browser.pause(2500);
+})
 
+When(/^user want to check the (.*) of the orders$/, function(status){
+  details1.statusChecking(status);
+})
 
-
+Then(/^user enter the order (.*) to search the details$/, function(numb){
+  details1.searchOrdersNum(numb);
 });
 
