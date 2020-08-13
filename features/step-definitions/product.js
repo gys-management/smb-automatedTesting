@@ -56,3 +56,21 @@ Then(/^user enter the order (.*) to search the details$/, function(numb){
   details1.searchOrdersNum(numb);
 });
 
+When(/^user click on the order number link$/, function(){
+  details1.clickOrderNum();
+})
+
+When(/^check the order date detail is there for (.*)$/,function(orderDate){
+  details1.orderdate(orderDate);
+})
+
+Then(/^check the estimated delivery date is there for(.*)$/,function(deliveryDate){
+  details1.deliveryDate(deliveryDate);
+})
+
+When(/^check the total amount field for(.*)$/,function(totalAmount){
+  details1.totalAmount(totalAmount);
+  details1.listOfProduct_Headers();
+  details1.listOfProductDetails();
+})
+

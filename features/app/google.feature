@@ -40,10 +40,15 @@ Feature: Agent handler
            And navigate to the <details> page
            And user want to check the <status> of the orders
            And user enter the order <num> to search the details
+           And user click on the order number link
+           Then check the order date detail is there for <orderDate>
+           Then check the estimated delivery date is there for <DeliveryDate>
+           Then check the total amount field for <Amountfield>
+          #  And I check the <product_name> and <price> for the the list of products
            
             Examples:
-            | url | Agent  |details|status|num|
-            |  prod| madhan |Orders|Pending|2|
+            | url | Agent  |details|status|num|orderDate|DeliveryDate|Amountfield|
+            |  prod| madhan |Orders|Pending|2|2020-06-19|2020-06-19|26.5|
 
 
     #    Scenario Outline: User to select the Customer option

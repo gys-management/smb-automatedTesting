@@ -2,6 +2,9 @@
 // var By = seleniumWebdriver.By
 // var Keys=seleniumWebdriver.Key
 // var chromedriver = require('chromedriver');
+
+const { WebElement, By } = require("selenium-webdriver");
+
 // var driver
 module.exports=class ActionFile {
     // constructor() {
@@ -86,6 +89,114 @@ module.exports=class ActionFile {
             
 
         }
+
+        clickOrderNum(){
+
+            let Orderlink=$('//*[@class="md button button-clear ion-activatable ion-focusable hydrated"]/a');
+            //href="/order/detail/5ef7bd236e4e6f3299c0cf1b"
+            
+            Orderlink.click();
+            browser.pause(3000);
+
         }
- 
+
+        orderdate(orderdate){
+
+            let orderTxt=$('//*[@id="ion-dt-0-lbl"]');
+            orderTxt.waitForDisplayed(1000);
+            let orderDate=$('//*[@placeholder="Select Date"and @formcontrolname="orderedDate"]');
+            orderDate.getText();
+            if(orderDate.getText()===orderdate){
+            console.log("Hii:"+orderDate.getText());
+           }
+        }
+
+        deliveryDate(deliveryDate){
+
+            let estimatedTxt=$('//*[@id="ion-dt-1-lbl"]');
+            estimatedTxt.waitForDisplayed(1000);
+            let estimatedDate=$('//*[@placeholder="Select Date"and @formcontrolname="estimatedDeliveryDate"]');
+            estimatedDate.getText();
+            if(estimatedDate.getText()=== deliveryDate){
+            console.log("Hii:"+estimatedDate.getText());
+            
+           }
+
+        }
+
+        totalAmount(totalAmount){
+
+            let totalAmount_txt=$('//*[@class="sc-ion-label-md-h sc-ion-label-md-s ion-color ion-color-primary md hydrated"][contains(text(),"Total Amount")]');
+            totalAmount_txt.waitForDisplayed(300);
+            browser.pause(3400);
+            let totalAmount_value=$('//*[@class="ion-text-right sc-ion-label-md-h sc-ion-label-md-s md hydrated"][contains(text(),'+totalAmount+')]');
+            totalAmount_value.waitForDisplayed(1200);
+        }
+
+
+        listOfProduct_Headers(){
+
+            console.log("list of Headers");
+          let  columnheader=$$('//*[@class="mat-table cdk-table ng-tns-c155-9 ng-star-inserted"]/*[@role="rowgroup"]/*[@role="row"]/*[@role="columnheader"]').length;
+              console.log("columnheader:"+columnheader);
+            for (let i= 1; i<=columnheader; i++) {
+
+               
+                // console.log("inside for loop");
+                 const element = $('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/thead/tr/th['+i+']/ion-label').getText();
+                if(element==="Name"){
+                    console.log("Name header is enabled");
+                    }
+                    else if(element==="Price"){
+                        console.log("Price header is enabled");
+                    }
+                    else if(element==="Quantity"){
+                        console.log("Quantity is enabled");
+                    }
+                    else if(element==="Sub-Total"){
+                        console.log("Sub-Total header is enabled");
+                    }
+
+                    else if(element==="GST"){
+                        console.log("GST is enabled");
+                    }
+                    else if(element==="Total"){
+                        console.log("Total is enabled");
+                    }
+                
+            }
+        }
+
+        listOfProductDetails(){
+            let rowcount=$$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr').length;
+
+            console.log("rowcount:"+rowcount);
+            // let columncount=$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr[1]/td');
+
+            for(let i=1;i<=rowcount;i++){
+                if(!(i%2==0)){
+                let columncount=$$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr['+i+']/td').length;
+
+                for( let j=1;j<=columncount;j++){
+                    if(j===1){
+                    let productdetails=$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr['+i+']/td['+j+']/ion-label').getText();
+                    console.log("The Product Details are mentiones as list"+i+","+j+":"+productdetails);
+                    }
+                    else{
+                        let productdetails=$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr['+i+']/td['+j+']/ion-input');
+                        console.log("The Product Details are mentiones as list"+i+","+j+":"+productdetails); 
+                    }
+
+                }
+            }
+
+            }
+
+//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr[1]/td[3]/ion-input
+        }
+    }
+        //*[@aria-labelledby="ion-input-12-lbl"]
+       //*[@aria-labelledby="ion-input-6-lbl"]
+        
+        
 
