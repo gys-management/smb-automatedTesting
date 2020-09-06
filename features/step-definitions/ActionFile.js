@@ -81,7 +81,9 @@ module.exports=class ActionFile {
        searchOrdersNum(orderNumber){
             // $('//*[@aria-label="search text"]\n');
            // let searchNumOrder=$('//*[@aria-label="search text"]').click();
-            let searchNumOrder=$('//*[@id="main-content"]/app-order/ion-content/ion-slides/div/ion-slide[1]/app-order-list/div/div[1]/ion-searchbar/div/input');
+           //*[@id="main-content"]/app-order/ion-content/ion-slides/div/ion-slide[1]/app-order-list/div[1]/ion-searchbar/div/input
+           
+            let searchNumOrder=$('//*[@id="main-content"]/app-order/ion-content/ion-slides/div/ion-slide[1]/app-order-list/div[1]/ion-searchbar/div/input');
             searchNumOrder.setValue(orderNumber);
             browser.pause(5000);
             browser.keys("\uE007");
@@ -104,7 +106,7 @@ module.exports=class ActionFile {
 
             let orderTxt=$('//*[@id="ion-dt-0-lbl"]');
             orderTxt.waitForDisplayed(1000);
-            let orderDate=$('//*[@placeholder="Select Date"and @formcontrolname="orderedDate"]');
+            let orderDate=$('//*[@aria-labelledby="ion-dt-0-lbl"and @formcontrolname="orderedDate"]');
             orderDate.getText();
             if(orderDate.getText()===orderdate){
             console.log("Hii:"+orderDate.getText());
@@ -115,7 +117,7 @@ module.exports=class ActionFile {
 
             let estimatedTxt=$('//*[@id="ion-dt-1-lbl"]');
             estimatedTxt.waitForDisplayed(1000);
-            let estimatedDate=$('//*[@placeholder="Select Date"and @formcontrolname="estimatedDeliveryDate"]');
+            let estimatedDate=$('//*[@aria-labelledby="ion-dt-1-lbl"and @formcontrolname="estimatedDeliveryDate"]');
             estimatedDate.getText();
             if(estimatedDate.getText()=== deliveryDate){
             console.log("Hii:"+estimatedDate.getText());
@@ -126,11 +128,11 @@ module.exports=class ActionFile {
 
         totalAmount(totalAmount){
 
-            let totalAmount_txt=$('//*[@class="sc-ion-label-md-h sc-ion-label-md-s ion-color ion-color-primary md hydrated"][contains(text(),"Total Amount")]');
+            let totalAmount_txt=$('//*[@aria-labelledby="ion-input-9-lbl"][@class="native-input sc-ion-input-md"]');
             totalAmount_txt.waitForDisplayed(300);
             browser.pause(3400);
-            let totalAmount_value=$('//*[@class="ion-text-right sc-ion-label-md-h sc-ion-label-md-s md hydrated"][contains(text(),'+totalAmount+')]');
-            totalAmount_value.waitForDisplayed(1200);
+            if(totalAmount_txt.getText()===totalAmount)
+            console.log("Hi the total Amount displayed is:"+totalAmount.getText())
         }
 
 
@@ -183,7 +185,7 @@ module.exports=class ActionFile {
                     console.log("The Product Details are mentiones as list"+i+","+j+":"+productdetails);
                     }
                     else{
-                        let productdetails=$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr['+i+']/td['+j+']/ion-input');
+                        let productdetails=$('//*[@id="main-content"]/app-detail-order/ion-content/form/ion-grid/ion-row[3]/ion-col/table/tbody/tr['+i+']/td['+j+']/ion-input/input').getText();
                         console.log("The Product Details are mentiones as list"+i+","+j+":"+productdetails); 
                     }
 

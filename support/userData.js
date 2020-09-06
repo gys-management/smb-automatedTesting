@@ -3,9 +3,9 @@ const madhan = {
     password: 'User@123'
 };
 const url ={
-    dev: "https://ionic-angular-61cb7.web.app/auth/login",
-    test: "https://ionic-angular-61cb7.web.app/auth/login",
-    prod: "https://ionic-angular-61cb7.web.app/auth/login"
+    dev: "https://smb-app-dev.gysite.in",
+    test: "https://smb-app-dev.gysite.in",
+    prod: "https://smb-app-dev.gysite.in"
 }
 
 module.exports = {

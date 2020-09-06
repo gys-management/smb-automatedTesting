@@ -7,11 +7,17 @@ let fileContents = fs.readFileSync('support/url.yml', 'utf8');
 let data = yaml.safeLoad(fileContents);
 let fileContents_locators = fs.readFileSync('support/url.yml', 'utf8');
 const ActionFile = require('./ActionFile');
+const ActionFile2=require('./ActionFile2');
 let details1 = new ActionFile();
+let details2=new ActionFile2();
 
 Given(/^I open the (.*) and login with (.*) id$/, function (url, agent) {
-
   browser.url(data[url]);
+
+  
+  
+
+ 
   let isDisplayed = $(`//*/input[@name="userName"]`);
   isDisplayed.waitForDisplayed(30000);
   userName = userData[agent].mobile;
@@ -19,7 +25,10 @@ Given(/^I open the (.*) and login with (.*) id$/, function (url, agent) {
   $('//*/input[@name="userName"]').setValue(userName);
   $('//*/input[@name="password"]').setValue(password);
   browser.pause(200);
-  $('//*/ion-button[text()="Login"]').click();
+  $('//*/*[@type="submit"]').click();
+
+  
+    
 
 });
 
@@ -73,4 +82,19 @@ When(/^check the total amount field for(.*)$/,function(totalAmount){
   details1.listOfProduct_Headers();
   details1.listOfProductDetails();
 })
+
+Then(/^user click on searchCustomerDetails page and enter the(.*)$/,function(Customername){
+  details2.searchCustomerDetails(Customername);
+})
+
+Then(/^user enter the orderNumber (.*) to search CustomerDetails$/, function(num){
+  details2.searchOrders(num);
+  
+});
+
+Then(/^user check for the Order Amount(.*) and (.*)$/, function(order_Amt,order_Text){
+details2.OrderAmount(order_Amt,order_Text);
+  
+
+});
 
