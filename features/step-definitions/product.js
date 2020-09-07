@@ -98,3 +98,30 @@ details2.OrderAmount(order_Amt,order_Text);
 
 });
 
+When(/^user ceck  for the Received Amount(.*) and (.*)$/, function(received_Amt,received_Text){
+  details2.ReceivedAmount(received_Amt,received_Text);
+
+})
+
+Then(/^user ceck  for the Pending Amount(.*) and (.*)$/, function(pending_Amt,pending_Text){
+details2.PendingAmount(pending_Amt,pending_Text);
+})
+
+Then(/^check the (.*) field is present with (.*)$/, function(Bill_To,Customername){
+  details2.BillingToNameDetails(Bill_To,Customername);
+})
+
+When(/^check the (.*) and (.*) and (.*) and (.*) and (.*) for the customer$/, function(name,phonenumber,address,email,pincode){
+details2.BillingToAddressDetails(name,phonenumber,address,email,pincode);
+})
+
+
+Then(/^check the (.*) field is present for the (.*)$/, function(Bill_From,Owner){
+  details2.BillingToNameDetails(Bill_From,Owner);
+})
+
+When(/^check the (.*) and (.*) and (.*) and (.*) and (.*) for the  delivered customer$/, function(name,phonenumber,address,email,pincode){
+details2.BillingToAddressDetails(name,phonenumber,address,email,pincode);
+})
+
+
